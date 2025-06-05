@@ -1,11 +1,7 @@
-# terraform-projekt
-
-
-
 ```markdown
 # Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung
 
- Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker.
+Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker.
 
 ## Inhaltsverzeichnis
 
@@ -61,9 +57,7 @@ Obwohl man eine solche lokale Umgebung auch mit Tools wie Docker Compose erstell
 
 Die Umgebung besteht aus folgenden Hauptkomponenten, die als Docker-Container in einem gemeinsamen Netzwerk (`app_network`) laufen:
 
-```
-![alt text](image.png)
-```
+![Architektur der Lösung](image.png)
 
 ## Terraform-Bausteine im Einsatz
 
@@ -113,14 +107,11 @@ Der komplette Standard-Workflow wurde durchlaufen:
 ### Initialisierung (`terraform init`)
 Hiermit werden die benötigten Provider heruntergeladen und das Backend initialisiert.
 
-
 ### Planung (`terraform plan`)
 Zeigt eine Vorschau der Änderungen, die Terraform an der Infrastruktur vornehmen wird. Man kann genau sehen, welche Ressourcen erstellt, geändert oder gelöscht werden.
 
-
 ### Anwendung (`terraform apply`)
 Erstellt oder aktualisiert die Infrastruktur gemäß der Konfiguration. Nach Bestätigung mit `yes` werden die Ressourcen angelegt. Die Outputs werden am Ende angezeigt.
- 
 
 ### Überprüfung der Infrastruktur
 Nach dem `apply` kann man manuell prüfen, ob alles wie erwartet läuft:
@@ -129,14 +120,11 @@ Nach dem `apply` kann man manuell prüfen, ob alles wie erwartet läuft:
 
 ### Aktualisierung der Infrastruktur
 Eine kleine Änderung in der Konfiguration (z.B. Anpassung eines Variablenwertes wie `external_nginx_port` oder Aktivierung des `deploy_monitoring_dummy`) demonstriert, wie Terraform gezielt nur die notwendigen Modifikationen vornimmt.
-*   Plan für das Update:
-    
-*   Apply für das Update:
-    
+*   Plan für das Update.
+*   Apply für das Update.
 
 ### Zerstörung der Infrastruktur (`terraform destroy`)
 Entfernt alle von Terraform in diesem Projekt erstellten Ressourcen sauber wieder vom System.
-
 
 ## Reflexion und Erkenntnisse
 
@@ -157,7 +145,6 @@ Diese Aufgabe geht über eine einfache Ressourcendefinition hinaus, weil:
 ### Vergleich zu manuellen Ansätzen
 Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfälliger und schwerer reproduzierbar gewesen. Auch im Vergleich zu reinen Shell-Skripten mit Docker-Befehlen bietet Terraform durch sein Zustandsmanagement und die Planungsphase deutliche Vorteile in Bezug auf Nachvollziehbarkeit und Sicherheit bei Änderungen.
 
-
 ## Screenshots des Workflows
 
 [Hier klicken, um die Screenshots anzusehen](./assets/)
@@ -173,6 +160,3 @@ Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfäl
 7.  Öffne die in den Outputs angezeigte `application_url` im Browser.
 8.  Um die Umgebung wieder abzubauen, führe `terraform destroy` aus.
 ```
-
-
-
