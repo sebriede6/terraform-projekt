@@ -75,11 +75,11 @@ resource "docker_container" "nginx_proxy" {
   }
 
   provisioner "local-exec" {
-    command = "echo '${replace(local.nginx_config_content, "\n", "\\n")}' > /tmp/${local.nginx_container_name}.conf"
+    command = "echo '${replace(local.nginx_config_content, "\n", "\\n")}' > ${path.module}/tmp/${local.nginx_container_name}.conf"
   }
 
   volumes {
-    host_path      = "/tmp/${local.nginx_container_name}.conf"
+    host_path      = abspath("${path.module}/nginx_config/default.conf.tpl")
     container_path = "/etc/nginx/conf.d/default.conf"
     read_only      = true
   }
