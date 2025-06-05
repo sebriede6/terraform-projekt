@@ -24,7 +24,7 @@
   - Zerstörung der Infrastruktur (`terraform destroy`)
 - Reflexion und Erkenntnisse
   - Herausforderungen und Lösungen
-  - [Warum "nicht-trivial"?]
+  - Warum "nicht-trivial"?
   - Vergleich zu manuellen Ansätzen
 - Screenshots des Workflows
 - Setup und Ausführung
