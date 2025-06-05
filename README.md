@@ -14,7 +14,7 @@
   - Variablen
   - Locals
   - Outputs
-  - [Module]
+  - Module
 - Der Terraform Workflow in Aktion
   - Initialisierung (`terraform init`)
   - Planung (`terraform plan`)
