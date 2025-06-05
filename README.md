@@ -1,6 +1,6 @@
 # terraform-projekt
 
----
+
 
 ```markdown
 # Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung
@@ -173,5 +173,5 @@ Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfäl
 7.  Öffne die in den Outputs angezeigte `application_url` im Browser.
 8.  Um die Umgebung wieder abzubauen, führe `terraform destroy` aus.
 
----
+
 
