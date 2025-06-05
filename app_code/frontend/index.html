@@ -20,7 +20,7 @@
         async function fetchApiData() {
             const responseDiv = document.getElementById('apiResponse');
             try {
-                const response = await fetch('/api/hello');
+                const response = await fetch('http://localhost:8080/api/hello'); // Updated to correct backend port
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }

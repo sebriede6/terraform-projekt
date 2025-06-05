@@ -9,7 +9,7 @@ server {
     }
 
     location /api/ {
-        proxy_pass http://127.0.0.1:3000/api/; # Replaced backend_host and backend_port with static values
+        proxy_pass http://devstack-backend-app-0:3000/api/; 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

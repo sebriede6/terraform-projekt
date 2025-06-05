@@ -8,7 +8,7 @@ variable "external_nginx_port" {
   description = "External port for the Nginx reverse proxy."
   type        = number
   default     = 8080
-}
+  }
 
 variable "db_postgres_image" {
   description = "Docker image for PostgreSQL."
