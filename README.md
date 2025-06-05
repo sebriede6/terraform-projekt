@@ -1,33 +1,33 @@
 
-# Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung
+# Terraformprojekt: Aufbau einer lokalen Entwicklungsumgebung
 
  Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker.
 
 ## Inhaltsverzeichnis
 
-- [Der Anwendungsfall: Problem und Lösung]
-- [Warum Terraform für diese Aufgabe?]
-- [Architektur der Lösung]
-- [Terraform-Bausteine im Einsatz]
-  - [Provider]
-  - [Ressourcen]
-  - [Variablen]
-  - [Locals]
-  - [Outputs]
+- Der Anwendungsfall: Problem und Lösung
+- Warum Terraform für diese Aufgabe?
+- Architektur der Lösung
+- Terraform-Bausteine im Einsatz
+  - Provider
+  - Ressourcen
+  - Variablen
+  - Locals
+  - Outputs
   - [Module]
-- [Der Terraform Workflow in Aktion]
-  - [Initialisierung (`terraform init`)]
-  - [Planung (`terraform plan`)]
-  - [Anwendung (`terraform apply`)]
-  - [Überprüfung der Infrastruktur]
-  - [Aktualisierung der Infrastruktur]
-  - [Zerstörung der Infrastruktur (`terraform destroy`)]
-- [Reflexion und Erkenntnisse]
-  - [Herausforderungen und Lösungen]
+- Der Terraform Workflow in Aktion
+  - Initialisierung (`terraform init`)
+  - Planung (`terraform plan`)
+  - Anwendung (`terraform apply`)
+  - Überprüfung der Infrastruktur
+  - Aktualisierung der Infrastruktur
+  - Zerstörung der Infrastruktur (`terraform destroy`)
+- Reflexion und Erkenntnisse
+  - Herausforderungen und Lösungen
   - [Warum "nicht-trivial"?]
-  - [Vergleich zu manuellen Ansätzen]
-- [Screenshots des Workflows]
-- [Setup und Ausführung]
+  - Vergleich zu manuellen Ansätzen
+- Screenshots des Workflows
+- Setup und Ausführung
 
 ## Der Anwendungsfall: Problem und Lösung
 
