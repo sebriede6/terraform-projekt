@@ -1,6 +1,15 @@
+terraform {
+  required_providers {
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "~> 3.0"
+    }
+  }
+}
+
 resource "docker_container" "service" {
-  name  = var.service_name
-  image = var.image
+  name    = var.service_name
+  image   = var.image
   restart = var.restart_policy
 
   dynamic "ports" {
@@ -15,7 +24,7 @@ resource "docker_container" "service" {
     name    = var.network_id # Here we pass network ID, not name directly
     aliases = [var.service_name]
   }
-  
+
   env = [for k, v in var.env_vars : "${k}=${v}"]
 
   dynamic "volumes" {
@@ -27,8 +36,13 @@ resource "docker_container" "service" {
       read_only      = volumes.value.read_only
     }
   }
-
   command = var.command
 
-  labels = var.labels
+  dynamic "labels" {
+    for_each = var.labels
+    content {
+      label = labels.key
+      value = labels.value
+    }
+  }
 }

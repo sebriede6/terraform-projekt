@@ -1,9 +1,9 @@
 locals {
-  network_name             = "${var.app_prefix}-network"
-  db_volume_name           = "${var.app_prefix}-pgdata"
-  backend_image_name       = "${var.app_prefix}-backend-app:latest"
-  nginx_container_name     = "${var.app_prefix}-nginx-proxy"
-  db_container_name        = "${var.app_prefix}-postgres-db"
+  network_name              = "${var.app_prefix}-network"
+  db_volume_name            = "${var.app_prefix}-pgdata"
+  backend_image_name        = "${var.app_prefix}-backend-app:latest"
+  nginx_container_name      = "${var.app_prefix}-nginx-proxy"
+  db_container_name         = "${var.app_prefix}-postgres-db"
   monitoring_container_name = "${var.app_prefix}-monitor-dummy"
 
   common_tags = {
@@ -14,7 +14,7 @@ locals {
 
   nginx_config_content = templatefile("${path.module}/nginx_config/default.conf.tpl", {
     backend_host = module.backend_service[0].container_name # Assumes at least one backend instance
-    backend_port = 3000 # Internal port of the backend service
+    backend_port = 3000                                     # Internal port of the backend service
   })
 
   db_password = lookup(var.db_credentials, "password", null) == null ? random_string.db_password[0].result : var.db_credentials["password"]

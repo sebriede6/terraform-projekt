@@ -18,7 +18,7 @@ variable "db_postgres_image" {
 
 variable "db_credentials" {
   description = "Credentials for the database (user, password, db_name). Password will be auto-generated if not provided."
-  type = map(string)
+  type        = map(string)
   default = {
     user    = "admin"
     db_name = "appdb"
