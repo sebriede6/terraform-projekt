@@ -62,15 +62,7 @@ Obwohl man eine solche lokale Umgebung auch mit Tools wie Docker Compose erstell
 Die Umgebung besteht aus folgenden Hauptkomponenten, die als Docker-Container in einem gemeinsamen Netzwerk (`app_network`) laufen:
 
 ```
-[Endbenutzer] ---> [Host Port z.B. 8080] ---> [Nginx Reverse Proxy Container]
-                                                    |
-                                                    +-- (Port 80) --> [Frontend (statische Dateien im Nginx)]
-                                                    |
-                                                    +-- (/api/*) ----> [Backend API Container (Node.js)]
-                                                                            |
-                                                                            +--> [PostgreSQL DB Container]
-                                                                                      |
-                                                                                      +--> [Docker Volume (Persistenz)]
+![alt text](image.png)
 ```
 
 ## Terraform-Bausteine im Einsatz
