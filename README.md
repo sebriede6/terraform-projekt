@@ -182,5 +182,4 @@ Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfäl
 8.  Um die Umgebung wieder abzubauen, führe `terraform destroy` aus.
 
 ---
-````
 
