@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraform Frontend</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f0f0f0; }
+        h1 { color: #333; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #007bff; color: white; border: none; border-radius: 5px; }
+        #apiResponse { margin-top: 20px; padding: 10px; background-color: #e9ecef; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Terraform-Managed Frontend!</h1>
+    <button onclick="fetchApiData()">Call Backend API</button>
+    <div id="apiResponse">Click the button to fetch data.</div>
+
+    <script>
+        async function fetchApiData() {
+            const responseDiv = document.getElementById('apiResponse');
+            try {
+                const response = await fetch('/api/hello');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                responseDiv.textContent = `API says: ${data.message} (from ${data.source})`;
+            } catch (error) {
+                responseDiv.textContent = `Error fetching data: ${error.message}`;
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>
