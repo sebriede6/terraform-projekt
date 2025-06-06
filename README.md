@@ -1,5 +1,6 @@
 
-# Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung
+```markdown
+# Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung mit Remote State
 
 Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker. Zusätzlich wurde das Konzept des Remote State Backends implementiert, um den Terraform State sicher und zentral in Azure Blob Storage zu verwalten.
 
@@ -15,6 +16,11 @@ Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mi
   - [Locals]
   - [Outputs]
   - [Module]
+- [Remote State Backend mit Azure Blob Storage]
+  - [Notwendigkeit und Vorteile]
+  - [Konfiguration des Backends]
+  - [Initialisierung und Migration des States]
+  - [Überprüfung des Remote States]
 - [Der Terraform Workflow in Aktion]
   - [Initialisierung (`terraform init`)]
   - [Planung (`terraform plan`)]
@@ -56,7 +62,6 @@ Obwohl man eine solche lokale Umgebung auch mit Tools wie Docker Compose erstell
 ## Architektur der Lösung
 
 Die Umgebung besteht aus folgenden Hauptkomponenten, die als Docker-Container in einem gemeinsamen Netzwerk (`app_network`) laufen:
-
 
 Der Terraform State wird in Azure Blob Storage gespeichert.
 
@@ -147,35 +152,34 @@ Der komplette Standard-Workflow wurde durchlaufen, wobei Terraform nun den State
 ### Initialisierung (`terraform init`)
 Hiermit werden die benötigten Provider heruntergeladen und das (Remote-)Backend initialisiert. Wenn ein Backend neu konfiguriert wird, findet hier die Migration des States statt.
 
-
 ### Planung (`terraform plan`)
 Zeigt eine Vorschau der Änderungen, die Terraform an der Infrastruktur vornehmen wird, basierend auf dem Remote State. Man kann genau sehen, welche Ressourcen erstellt, geändert oder gelöscht werden.
 
-
 ### Anwendung (`terraform apply`)
 Erstellt oder aktualisiert die Infrastruktur gemäß der Konfiguration. Nach Bestätigung mit `yes` werden die Ressourcen angelegt. Die Outputs werden am Ende angezeigt. Der Remote State wird aktualisiert.
-
 
 ### Überprüfung der Infrastruktur
 Nach dem `apply` kann man manuell prüfen, ob alles wie erwartet läuft:
 *   Die `application_url` im Browser öffnen und die Webanwendung testen.
 *   Mit `docker ps` die laufenden Container auflisten.
-
 *   Mit `terraform state list` die im Remote State verwalteten Ressourcen anzeigen.
-
 
 ### Aktualisierung der Infrastruktur
 Eine kleine Änderung in der Konfiguration (z.B. Anpassung eines Variablenwertes wie `external_nginx_port` oder Aktivierung des `deploy_monitoring_dummy`) demonstriert, wie Terraform gezielt nur die notwendigen Modifikationen vornimmt.
-
+*   Plan für das Update:
+*   Apply für das Update:
 
 ### Zerstörung der Infrastruktur (`terraform destroy`)
 Entfernt alle von Terraform in diesem Projekt erstellten Ressourcen sauber wieder vom System. Der Remote State wird entsprechend aktualisiert.
 
-
 ## Reflexion und Erkenntnisse
 
 ### Herausforderungen und Lösungen
-*   **Korrekte Label-Syntax für Docker-Ressourcen:** Die Syntax für Labels unterschied sich zwischen `docker_container`/`docker_image` und `docker_network`/`docker_volume`. Die dynamische Erzeugung mit `dynamic "labels"` (Plural!) für `docker_network` und `docker_volume` (wiederholbarer `labels`-Block mit `label`- und `value`-Argumenten) war hier der Schlüssel, während für `docker_container` und `docker_image` die direkte Map-Zuweisung (`labels = local.common_tags`) korrekt ist. *Hinweis: Nach weiterem Testen stellte sich heraus, dass der Provider für alle diese Ressourcen (network, volume, container) die `dynamic "labels"`-Syntax zu bevorzugen scheint, wenn man alle `common_tags` anwenden möchte.*
+*   **Korrekte Label-Syntax für Docker-Ressourcen:** Die Syntax für Labels unterschied sich zwischen `docker_container`/`docker_image` und `docker_network`/`docker_volume`.
+ Die dynamische Erzeugung mit `dynamic "labels"` (Plural!) für `docker_network` und `docker_volume` (wiederholbarer `labels`-Block mit `label`- und `value`-Argumenten) war hier der Schlüssel, während für `docker_container` und `docker_image` die direkte Map-Zuweisung (`labels = local.common_tags`) korrekt ist. 
+ 
+ *Hinweis: Nach weiterem Testen stellte sich heraus, dass der Provider für alle diese Ressourcen (network, volume, container) die `dynamic "labels"`-Syntax zu bevorzugen scheint, wenn man alle `common_tags` anwenden möchte.*
+ 
 *   **Dynamische Nginx-Konfiguration:** Die Nginx-Konfig musste den internen Hostnamen des Backends kennen. Dies wurde mit `templatefile` und einem `local-exec` Provisioner gelöst, der die Konfig temporär schreibt und per Volume mountet.
 *   **Abhängigkeiten zwischen Ressourcen:** `depends_on` wurde genutzt, um sicherzustellen, dass z.B. das Backend erst startet, wenn die Datenbank bereit ist (oder zumindest der Container gestartet wurde).
 *   **Remote State Konfiguration:** Die korrekten Namen für Ressourcengruppe, Storage Account und Container mussten ermittelt und die Azure-Infrastruktur für das Backend manuell (oder per separatem IaC-Skript) erstellt werden, bevor Terraform es nutzen konnte.
