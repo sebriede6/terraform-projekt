@@ -1,4 +1,4 @@
-
+```markdown
 # Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung mit Remote State
 
 Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker. Zusätzlich wurde das Konzept des Remote State Backends implementiert, um den Terraform State sicher und zentral in Azure Blob Storage zu verwalten.
@@ -31,7 +31,7 @@ Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mi
   - [Herausforderungen und Lösungen]
   - [Warum "nicht-trivial"?]
   - [Vergleich zu manuellen Ansätzen]
-- [Screenshots des Workflows]
+- [Screenshots des Workflows](./assets/)
 - [Setup und Ausführung]
 
 ## Der Anwendungsfall: Problem und Lösung
@@ -212,6 +212,4 @@ Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfäl
 8.  Führe `terraform apply` aus und bestätige mit `yes`.
 9.  Öffne die in den Outputs angezeigte `application_url` im Browser.
 10. Um die Umgebung wieder abzubauen, führe `terraform destroy` aus.
-
-```
 
