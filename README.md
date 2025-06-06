@@ -1,7 +1,5 @@
 
-
-```markdown
-# Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung mit Remote State
+# Terraform Ganztagesprojekt: Aufbau einer lokalen Entwicklungsumgebung
 
 Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mit Terraform praktisch anzuwenden. Dafür wurde ein eigener, nicht-trivialer Anwendungsfall identifiziert und umgesetzt: die Erstellung einer lokalen Full-Stack-Entwicklungsumgebung mittels Docker. Zusätzlich wurde das Konzept des Remote State Backends implementiert, um den Terraform State sicher und zentral in Azure Blob Storage zu verwalten.
 
@@ -17,11 +15,6 @@ Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mi
   - [Locals]
   - [Outputs]
   - [Module]
-- [Remote State Backend mit Azure Blob Storage]
-  - [Notwendigkeit und Vorteile]
-  - [Konfiguration des Backends]
-  - [Initialisierung und Migration des States]
-  - [Überprüfung des Remote States]
 - [Der Terraform Workflow in Aktion]
   - [Initialisierung (`terraform init`)]
   - [Planung (`terraform plan`)]
@@ -33,7 +26,7 @@ Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mi
   - [Herausforderungen und Lösungen]
   - [Warum "nicht-trivial"?]
   - [Vergleich zu manuellen Ansätzen]
-
+- [Screenshots des Workflows]
 - [Setup und Ausführung]
 
 ## Der Anwendungsfall: Problem und Lösung
