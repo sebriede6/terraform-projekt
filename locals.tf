@@ -13,8 +13,8 @@ locals {
   }
 
   nginx_config_content = templatefile("${path.module}/nginx_config/default.conf.tpl", {
-    backend_host = module.backend_service[0].container_name # Assumes at least one backend instance
-    backend_port = 3000                                     # Internal port of the backend service
+    backend_host = module.backend_service[0].container_name 
+    backend_port = 3000                                     
   })
 
   db_password = lookup(var.db_credentials, "password", null) == null ? random_string.db_password[0].result : var.db_credentials["password"]

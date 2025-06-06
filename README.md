@@ -32,6 +32,7 @@ Ziel dieser Aufgabe war es, die Kernkonzepte von Infrastructure as Code (IaC) mi
   - [Warum "nicht-trivial"?]
   - [Vergleich zu manuellen Ansätzen]
 - [Screenshots des Workflows](./assets/)
+- [Screenshots des Workflows](./assets/)
 - [Setup und Ausführung]
 
 ## Der Anwendungsfall: Problem und Lösung

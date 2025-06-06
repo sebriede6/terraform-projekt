@@ -11,14 +11,14 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-# Exclude Terraform state files
+
 terraform.tfstate
 terraform.tfstate.backup
 
-# Exclude temporary files
+
 /tmp/
 
-# Exclude provisioner files
+
 placeholder.txt
 
 # Docker
