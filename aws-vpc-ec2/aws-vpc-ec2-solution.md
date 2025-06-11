@@ -1,4 +1,4 @@
-```markdown
+```
 # Aufgabe: AWS VPC und EC2 Instanz mit Terraform deployen
 
 ## Einleitung
