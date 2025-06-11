@@ -222,5 +222,5 @@ Für detaillierte Dokumentation und Implementierung siehe die [AWS S3 Recherche-
 
 ## AWS Terraform-Deployment
 
-Für detaillierte Dokumentation und Implementierung siehe die [AWS Deployment-Aufgabe 11.06.2025](./aws-vps-ec2/aws-vpc-ec2-solution.md).
+Für detaillierte Dokumentation und Implementierung siehe die [AWS Deployment-Aufgabe 11.06.2025](./aws-vpc-ec2/aws-vpc-ec2-solution.md).
 ```
