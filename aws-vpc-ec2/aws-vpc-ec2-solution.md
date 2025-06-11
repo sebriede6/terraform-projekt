@@ -117,5 +117,5 @@ Die `terraform.tfstate`-Datei (oder der State im Remote Backend) ist die "Wahrhe
 
 ## Screenshots des Terraform Workflows
 
-
+[Screenshots des Workflows](./assets/)
 
