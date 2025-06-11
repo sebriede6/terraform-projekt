@@ -219,5 +219,8 @@ Die manuelle Erstellung dieser Umgebung wäre deutlich aufwendiger, fehleranfäl
 In dieser Rechercheaufgabe wurde der AWS Provider für Terraform untersucht, mit Fokus auf die Erstellung und Verwaltung einer `aws_s3_bucket` Ressource. Die Aufgabe umfasste das Verständnis der Konfiguration, Outputs und Best Practices für die Nutzung des AWS Providers.
 
 Für detaillierte Dokumentation und Implementierung siehe die [AWS S3 Recherche-Dokumentation](./aws-s3-research/aws-s3-research.md).
-```
 
+## AWS Terraform-Deployment
+
+Für detaillierte Dokumentation und Implementierung siehe die [AWS Deployment-Aufgabe 11.06.2025](./aws-vps-ec2/aws-vpc-ec2-solution.md).
+```
