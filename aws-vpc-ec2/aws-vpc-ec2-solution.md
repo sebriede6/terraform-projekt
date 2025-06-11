@@ -116,7 +116,7 @@ Die `terraform.tfstate`-Datei (oder der State im Remote Backend) ist die "Wahrhe
 *   **Nach `terraform destroy`:** Die State-Datei wird aktualisiert, indem die Einträge für die zerstörten Ressourcen entfernt werden. Wenn alle Ressourcen der Konfiguration zerstört wurden, ist der State bezüglich dieser Ressourcen leer.
 
 ## Screenshots des Terraform Workflows
-```
+
 [Screenshots des Workflows](./assets/)
 ```
 
