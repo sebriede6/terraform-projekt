@@ -1,4 +1,4 @@
-```markdown
+
 # Recherche: Der AWS Provider für Terraform
 
 ## Einleitung
@@ -131,5 +131,5 @@ Die `output` Blöcke in `outputs.tf` dienen dazu, nach einem erfolgreichen `terr
 *   `research_bucket_arn`: Gibt den Amazon Resource Name des Buckets aus, eine global eindeutige Kennung innerhalb von AWS.
 *   `research_bucket_regional_domain_name`: Stellt die DNS-Adresse bereit, unter der der Bucket in seiner spezifischen AWS-Region direkt adressierbar ist.
 
-[Assets Folder](./assets/)
+[Screenshots](./assets/)
 ```
