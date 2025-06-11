@@ -1,6 +1,6 @@
 
 provider "aws" {
-  region = "eu-central-1" # Wähle deine bevorzugte AWS Region
+  region = "eu-central-1" 
   default_tags {
     tags = {
       TerraformManaged = "true"
