@@ -4,8 +4,6 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    # Suche nach Ubuntu 22.04 LTS (Jammy) amd64 server AMI
-    # Das genaue Namensmuster kann sich leicht ändern, dies ist ein gängiges.
     values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server-*"]
   }
 
@@ -17,10 +15,10 @@ data "aws_ami" "ubuntu" {
 
 resource "aws_instance" "web_server" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro" # Free Tier fähig
+  instance_type          = "t2.micro" 
   subnet_id              = aws_subnet.public.id
   vpc_security_group_ids = [aws_security_group.allow_web_ssh.id]
-  # Optional: key_name = "dein-aws-key-pair-name" # Wenn du dich per SSH verbinden willst
+  
 
   user_data = <<-EOF
               #!/bin/bash
